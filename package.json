@@ -1,0 +1,18 @@
+{
+  "name": "georli-jiffy-scan",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ lazycoder1/georli-jiffy-scan",
+    "create-local": "graph create --node http://localhost:8020/ lazycoder1/georli-jiffy-scan",
+    "remove-local": "graph remove --node http://localhost:8020/ lazycoder1/georli-jiffy-scan",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 lazycoder1/georli-jiffy-scan",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.40.0",
+    "@graphprotocol/graph-ts": "0.29.1"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
