@@ -4,5 +4,23 @@
       "address": "0x0576a174D229E3cFA37253523E645A78A0C91B57",
       "startBlock": 8484567
     }
+  },
+  "mainnet": {
+    "EntryPoint": {
+      "address": "0x0576a174D229E3cFA37253523E645A78A0C91B57",
+      "startBlock": 16693601
+    }
+  },
+  "optimism-goerli": {
+    "EntryPoint": {
+      "address": "0x0576a174D229E3cFA37253523E645A78A0C91B57",
+      "startBlock": 5438184
+    }
+  },
+  "matic": {
+    "EntryPoint": {
+      "address": "0x0576a174D229E3cFA37253523E645A78A0C91B57",
+      "startBlock": 39634695
+    }
   }
 }

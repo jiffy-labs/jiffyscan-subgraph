@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: EntryPoint
@@ -25,7 +25,7 @@ dataSources:
         - Withdrawn
       abis:
         - name: EntryPoint
-          file: ./abis/EntryPoint.json
+          file: EntryPoint/abis/EntryPoint.json
       eventHandlers:
         - event: AccountDeployed(indexed bytes32,indexed address,address,address)
           handler: handleAccountDeployed
@@ -46,4 +46,4 @@ dataSources:
           handler: handleUserOperationRevertReason
         - event: Withdrawn(indexed address,address,uint256)
           handler: handleWithdrawn
-      file: ./src/entry-point.ts
+      file: EntryPoint/EntryPoint.wasm
