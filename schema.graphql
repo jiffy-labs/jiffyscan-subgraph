@@ -55,6 +55,16 @@ type StakeWithdrawn @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type Bundle @entity {
+  id: ID!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  userOps: [UserOp!]! @derivedFrom(field: "bundle")
+  userOpsLength: BigInt!
+  network: String
+}
+
 type EVMAddress @entity {
   id: ID!
   address: Bytes
@@ -82,6 +92,7 @@ enum HashType {
 type UserOp @entity {
   id: ID!
   transactionHash: Bytes
+  bundle: Bundle! 
   userOpHash: Bytes
   sender: Bytes
   paymaster: Bytes

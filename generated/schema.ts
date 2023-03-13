@@ -515,6 +515,100 @@ export class StakeWithdrawn extends Entity {
   }
 }
 
+export class Bundle extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save Bundle entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type Bundle must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("Bundle", id.toString(), this);
+    }
+  }
+
+  static load(id: string): Bundle | null {
+    return changetype<Bundle | null>(store.get("Bundle", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value!.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value!.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get userOps(): Array<string> {
+    let value = this.get("userOps");
+    return value!.toStringArray();
+  }
+
+  set userOps(value: Array<string>) {
+    this.set("userOps", Value.fromStringArray(value));
+  }
+
+  get userOpsLength(): BigInt {
+    let value = this.get("userOpsLength");
+    return value!.toBigInt();
+  }
+
+  set userOpsLength(value: BigInt) {
+    this.set("userOpsLength", Value.fromBigInt(value));
+  }
+
+  get network(): string | null {
+    let value = this.get("network");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set network(value: string | null) {
+    if (!value) {
+      this.unset("network");
+    } else {
+      this.set("network", Value.fromString(<string>value));
+    }
+  }
+}
+
 export class EVMAddress extends Entity {
   constructor(id: string) {
     super();
@@ -693,6 +787,15 @@ export class UserOp extends Entity {
     } else {
       this.set("transactionHash", Value.fromBytes(<Bytes>value));
     }
+  }
+
+  get bundle(): string {
+    let value = this.get("bundle");
+    return value!.toString();
+  }
+
+  set bundle(value: string) {
+    this.set("bundle", Value.fromString(value));
   }
 
   get userOpHash(): Bytes | null {

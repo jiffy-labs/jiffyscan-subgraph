@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: EntryPoint
-    network: optimism-goerli
+    network: matic
     source:
       abi: EntryPoint
       address: "0x0576a174D229E3cFA37253523E645A78A0C91B57"
-      startBlock: 5438184
+      startBlock: 39634695
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
